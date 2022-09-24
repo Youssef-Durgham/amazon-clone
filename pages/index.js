@@ -107,7 +107,7 @@ export const getServerSideProps = async (context) => {
     (res) => res.json()
   )
 
-  const api2 = await fetch('http://localhost:1337/api/products').then(
+  const api2 = await fetch('https://amazoncms.herokuapp.com/api/products').then(
     (res) => res.json()
   )
 
