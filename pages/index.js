@@ -9,7 +9,7 @@ import Productslider from './../components/Productslider';
 import Productslider2 from '../components/Productslider2'
 
 
-export default function Home( { products, electroniccat, jewelerycat, electroniccatnolim, api2} ) {
+export default function Home( { products, electroniccat, jewelerycat, electroniccatnolim } ) {
   
   return (
     <div className='bg-gray-100'>
@@ -67,7 +67,7 @@ export default function Home( { products, electroniccat, jewelerycat, electronic
         <Onecateg typename={"Headphones"} linked={"/categorys/Headphones"} title={"Shop now"} src={'/Images/headphones.jpg'} />
     </div>
     {/*slide items */}
-    <Productslider2 api2={api2} title={"Top Selling all the time"} />
+    
     <Productslider electroniccat={electroniccatnolim} title={"Top selling this month"} />
     {/* pc slide cat */}
     
@@ -107,9 +107,7 @@ export const getServerSideProps = async (context) => {
     (res) => res.json()
   )
 
-  const api2 = await fetch('https://amazoncms.herokuapp.com/api/products').then(
-    (res) => res.json()
-  )
+  
 
   const electroniccatnolim = await fetch('https://fakestoreapi.com/products').then(
     (res) => res.json()
@@ -124,7 +122,7 @@ export const getServerSideProps = async (context) => {
     electroniccat,
     jewelerycat,
     electroniccatnolim,
-    api2,
+    
   }}
 
 }
