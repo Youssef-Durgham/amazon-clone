@@ -470,14 +470,3 @@ function Product({api2}) {
 export default Product
 
 
-export const getServerSideProps = async (context) => {
-    const { id } = context.query;
-    const api2 = await fetch(`https://amazoncms.herokuapp.com/api/products/${id}`).then(
-        (res) => res.json()
-      )
-
-      return { props: {
-        api2,
-        
-      }}
-}
