@@ -1,9 +1,17 @@
 import Image from "next/future/image";
 import React from "react";
 import StarRatings from 'react-star-ratings';
-import  Currency  from 'react-currency-formatter';
 
 function Checkoutproduct({key,id,title,price,image}) {
+  function formatCurrency(amount, currency = 'USD', locale = 'en-US') {
+    const formatter = new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+    });
+  
+    return formatter.format(amount);
+  }
+  
   return (
     <div className="flex border-b border-b-[#DDD] pb-5" key={id}>
       {/* image */}
@@ -16,7 +24,7 @@ function Checkoutproduct({key,id,title,price,image}) {
       </div>
       {/* price */}
       <div className="ml-5 tablet:ml-auto text-lg font-bold">
-        ${price}
+      {formatCurrency(price)}
       </div>
     </div>
   )
