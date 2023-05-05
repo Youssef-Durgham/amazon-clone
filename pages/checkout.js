@@ -8,7 +8,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import axios from 'axios'
 function Checkout() {
-    const stripePromise = loadStripe(process.env.stripe_public_key);
+    const stripePromise = loadStripe("pk_test_51Lky6lFvFazxhLkNiMtnu0RRD1Y5V1qY9GZpPlULaBzxSzyjtmLjjkeaNcJ3UNsWYypPxLuqgOodiYon6xlkgiyI00GnrYACVx");
     const items = useSelector(selectItems)
     let totalprice = 0
     const totals = () => {
