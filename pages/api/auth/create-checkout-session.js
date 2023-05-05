@@ -1,4 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')("sk_test_51Lky6lFvFazxhLkNorKUqYczqM17NIQgOcnKH2hanUubyPWEmmtNxcadh0xhNM4j0OQgCaExIxHkMwZQgVrpocue00sWHeXSVj")
 
 export default async (req, res) => {
     const { items } = req.body
@@ -67,8 +67,8 @@ export default async (req, res) => {
         },
         line_items: transformeditems,
         mode: 'payment',
-        success_url: `${process.env.HOST}`,
-        cancel_url: `${process.env.HOST}/checkout`,
+        success_url: `https://main.d3jendtebv8n87.amplifyapp.com`,
+        cancel_url: `https://main.d3jendtebv8n87.amplifyapp.com/checkout`,
     })
 
     res.status(200).json({ id: session.id })
