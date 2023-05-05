@@ -7,10 +7,18 @@ import Signin from '../components/Signin'
 import Onecateg from './../components/Onecateg';
 import Productslider from './../components/Productslider';
 import Productslider2 from '../components/Productslider2'
+import { useState, useEffect } from 'react';
 
 
 export default function Home( { products, electroniccat, jewelerycat, electroniccatnolim } ) {
-  
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className='bg-gray-100'>
       <Head>
