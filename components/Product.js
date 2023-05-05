@@ -1,6 +1,5 @@
 import Image from 'next/future/image'
 import StarRatings from 'react-star-ratings';
-import Currency from "react-currency-formatter"
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../slice/cartSlice'
 
@@ -12,6 +11,15 @@ function Product( { category, id, image, description, rating, price, title } ) {
         }
         dispatch(addToCart(Product))
     }
+    function formatCurrency(amount, currency = 'USD', locale = 'en-US') {
+        const formatter = new Intl.NumberFormat(locale, {
+          style: 'currency',
+          currency: currency,
+        });
+      
+        return formatter.format(amount);
+      }
+      
     return (
     <div className='relative flex md:flex-col mt-3 bg-white z-30 p-2 rounded-2xl'>
         {/* <p className='absolute top-2 right-2 text-xs italic text-gray-400'>{category}</p> */}
@@ -35,7 +43,7 @@ function Product( { category, id, image, description, rating, price, title } ) {
         
 
         <div className='mb-5 cursor-pointer'>
-            <Currency quantity={price} currency='USD' />
+        <div>{formatCurrency(price)}</div>
         </div>
 
         {/* here i need to add function >> if prime true in database show it */}
@@ -51,14 +59,3 @@ function Product( { category, id, image, description, rating, price, title } ) {
 }
 
 export default Product
-
-{/* <div class="flex items-center justify-center ">
-        <div class="flex items-center justify-between h-24 text-white bg-purple-600 rounded-lg shadow-md">
-        <img class="h-40 w-40 py-2 pr-4 " src={image}></img>
-            <div class="flex flex-col px-4">
-                <span class="text-xs text-purple-300">Next visit</span>
-                <p class="text-2xl font-semibold uppercase">19 Oct 2021</p>
-            </div>
-            
-        </div>
-    </div> */}
